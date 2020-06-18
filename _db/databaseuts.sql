@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2020 at 09:15 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Waktu pembuatan: 18 Jun 2020 pada 18.53
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `poto`
+-- Database: `databaseuts`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_album`
+-- Struktur dari tabel `tb_album`
 --
 
 CREATE TABLE `tb_album` (
@@ -35,7 +35,7 @@ CREATE TABLE `tb_album` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_album`
+-- Dumping data untuk tabel `tb_album`
 --
 
 INSERT INTO `tb_album` (`id`, `album_name`, `album_text`, `photo_id`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `tb_album` (`id`, `album_name`, `album_text`, `photo_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_category`
+-- Struktur dari tabel `tb_category`
 --
 
 CREATE TABLE `tb_category` (
@@ -54,7 +54,7 @@ CREATE TABLE `tb_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_category`
+-- Dumping data untuk tabel `tb_category`
 --
 
 INSERT INTO `tb_category` (`cat_id`, `cat_name`, `cat_text`) VALUES
@@ -63,7 +63,7 @@ INSERT INTO `tb_category` (`cat_id`, `cat_name`, `cat_text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_photos`
+-- Struktur dari tabel `tb_photos`
 --
 
 CREATE TABLE `tb_photos` (
@@ -75,17 +75,18 @@ CREATE TABLE `tb_photos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_photos`
+-- Dumping data untuk tabel `tb_photos`
 --
 
 INSERT INTO `tb_photos` (`id`, `photo_date`, `title`, `photo_text`, `post_id`) VALUES
 (1, '2020-06-03', 'alami', 'nature', 1),
-(5, '2020-06-24', 'cantik', 'imut', NULL);
+(5, '2020-06-24', 'cantik', 'imut', NULL),
+(6, '0000-00-00', 'carik', 'ayu', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_post`
+-- Struktur dari tabel `tb_post`
 --
 
 CREATE TABLE `tb_post` (
@@ -98,16 +99,18 @@ CREATE TABLE `tb_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_post`
+-- Dumping data untuk tabel `tb_post`
 --
 
 INSERT INTO `tb_post` (`id`, `post_date`, `slug`, `title`, `post_text`, `cat_id`) VALUES
-(1, '2020-06-03', 'lala', 'alami', 'nature', 1);
+(1, '2020-06-03', 'lala', 'alami', 'nature', 1),
+(6, '2020-06-10', 'Samsul', 'Goyang Dumang', 'Goyang Sendiri', 1),
+(7, '0000-00-00', 'goyang', 'goyang', 'goyang', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -118,103 +121,106 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`) VALUES
+(3, 'samsul bahri siagian', 'samsulbahrisiagian', 'samsul123'),
 (4, 'Laila Turrubiyah', 'laila', 'laila123'),
-(5, 'Muhammad Sabri', 'sabri', 'sabri123');
+(5, 'Muhammad Sabri', 'sabri', 'sabri123'),
+(7, 'Fioza', 'Fioza', 'Fiozastore'),
+(8, 'admin', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_album`
+-- Indeks untuk tabel `tb_album`
 --
 ALTER TABLE `tb_album`
   ADD PRIMARY KEY (`id`),
   ADD KEY `photo_id` (`photo_id`);
 
 --
--- Indexes for table `tb_category`
+-- Indeks untuk tabel `tb_category`
 --
 ALTER TABLE `tb_category`
   ADD PRIMARY KEY (`cat_id`),
   ADD UNIQUE KEY `cat_name` (`cat_name`);
 
 --
--- Indexes for table `tb_photos`
+-- Indeks untuk tabel `tb_photos`
 --
 ALTER TABLE `tb_photos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `tb_post`
+-- Indeks untuk tabel `tb_post`
 --
 ALTER TABLE `tb_post`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cat_id` (`cat_id`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_album`
+-- AUTO_INCREMENT untuk tabel `tb_album`
 --
 ALTER TABLE `tb_album`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_category`
+-- AUTO_INCREMENT untuk tabel `tb_category`
 --
 ALTER TABLE `tb_category`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tb_photos`
+-- AUTO_INCREMENT untuk tabel `tb_photos`
 --
 ALTER TABLE `tb_photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tb_post`
---
-ALTER TABLE `tb_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tb_user`
---
-ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT untuk tabel `tb_post`
+--
+ALTER TABLE `tb_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tb_album`
+-- Ketidakleluasaan untuk tabel `tb_album`
 --
 ALTER TABLE `tb_album`
   ADD CONSTRAINT `tb_album_ibfk_1` FOREIGN KEY (`photo_id`) REFERENCES `tb_photos` (`id`);
 
 --
--- Constraints for table `tb_photos`
+-- Ketidakleluasaan untuk tabel `tb_photos`
 --
 ALTER TABLE `tb_photos`
   ADD CONSTRAINT `tb_photos_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `tb_post` (`id`);
 
 --
--- Constraints for table `tb_post`
+-- Ketidakleluasaan untuk tabel `tb_post`
 --
 ALTER TABLE `tb_post`
   ADD CONSTRAINT `tb_post_ibfk_1` FOREIGN KEY (`cat_id`) REFERENCES `tb_category` (`cat_id`);
