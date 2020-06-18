@@ -1,0 +1,14 @@
+{
+    "name": "samsulbahrisiagian/si-musicplayer",
+    "description": "Pemograman Berbasis Web Lanjutan Sistem Informasi 3 Uin Sumatera Utara Medan SiMusicPlayer",
+    "type": "Project",
+    "require": {
+        "php": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "samsul bahri siagian",
+            "email": "samsulbahrisiagian@gmail.com"
+        }
+    ]
+}
